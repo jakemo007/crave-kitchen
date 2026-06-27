@@ -10,39 +10,55 @@
             --bg: #F8F9FA;
             --dark: #1A1A1A;
             --card: #FFFFFF;
+            --text-muted: #666666;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; scroll-behavior: smooth; }
         
-        body { background-color: var(--bg); color: var(--dark); padding-bottom: 90px; }
+        body { background-color: var(--bg); color: var(--dark); padding-bottom: 90px; line-height: 1.6; }
 
         /* Navigation */
         header {
-            background: #fff; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); padding: 16px 24px; 
+            display: flex; justify-content: space-between; align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100;
         }
-        .logo { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; }
+        .logo { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; text-decoration: none; color: var(--dark); }
         .logo span { color: var(--brand); }
+        
+        nav { display: flex; gap: 20px; }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 14px; transition: color 0.2s; }
+        nav a:hover { color: var(--brand); }
+
         .cart-pill {
             background: #EEEEEE; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px;
         }
 
         /* Hero Pitch */
         .hero {
-            background: linear-gradient(135deg, #111 0%, #222 100%); color: #fff; padding: 48px 24px; text-align: center;
+            background: linear-gradient(135deg, #111 0%, #222 100%); color: #fff; padding: 64px 24px; text-align: center;
         }
-        .hero h1 { font-size: 28px; margin-bottom: 8px; font-weight: 800; }
-        .hero p { color: #AAA; font-size: 15px; max-width: 500px; margin: 0 auto; line-height: 1.4; }
-        .tag { background: var(--brand); color: white; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; }
+        .hero h1 { font-size: 36px; margin: 12px 0; font-weight: 800; letter-spacing: -1px; }
+        .hero p { color: #AAA; font-size: 16px; max-width: 550px; margin: 0 auto 24px auto; }
+        .tag { background: var(--brand); color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Global Containers */
+        .container { max-width: 1000px; margin: 64px auto; padding: 0 16px; }
+        .section-title { font-size: 24px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .section-subtitle { color: var(--text-muted); font-size: 15px; margin-bottom: 24px; }
+        
+        /* About Section */
+        .about-box {
+            background: var(--card); padding: 32px; border-radius: 16px; border: 1px solid #EAEAEA;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 24px; }
+        .stat-box { border-left: 3px solid var(--brand); padding-left: 16px; }
+        .stat-num { font-size: 28px; font-weight: 800; color: var(--brand); }
+        .stat-label { font-size: 13px; color: var(--text-muted); font-weight: 600; }
 
         /* Menu Grid */
-        .container { max-width: 1000px; margin: 32px auto; padding: 0 16px; }
-        .section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-        
-        .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
-        }
-
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
         .card {
             background: var(--card); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             display: flex; flex-direction: column; transition: transform 0.2s; border: 1px solid #EAEAEA;
@@ -51,8 +67,7 @@
         .card img { width: 100%; height: 170px; object-fit: cover; }
         .card-body { padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .dish-name { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
-        .dish-desc { font-size: 13px; color: #666; margin-bottom: 16px; line-height: 1.3; }
-        
+        .dish-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
         .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F0F0F0; padding-top: 12px; }
         .price { font-weight: 800; font-size: 17px; }
         
@@ -62,7 +77,26 @@
         }
         .add-btn:active { background: var(--brand); }
 
-        /* Toast Notification */
+        /* Reviews Section */
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .review-card { background: var(--card); padding: 24px; border-radius: 16px; border: 1px solid #EAEAEA; }
+        .stars { color: #FFC107; font-size: 16px; margin-bottom: 12px; }
+        .review-text { font-style: italic; font-size: 14px; color: #333; margin-bottom: 16px; }
+        .reviewer { font-weight: 700; font-size: 13px; color: var(--text-muted); }
+
+        /* Location Section */
+        .location-card {
+            background: var(--dark); color: #fff; border-radius: 16px; padding: 32px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px;
+        }
+        .loc-details h3 { color: var(--brand); margin-bottom: 12px; font-size: 18px; }
+        .loc-details p { color: #CCC; font-size: 14px; margin-bottom: 8px; }
+        .map-placeholder {
+            background: #333; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            min-height: 180px; border: 2px dashed #555; text-align: center; padding: 20px;
+        }
+
+        /* Toast & Checkout Bar */
         #toast {
             visibility: hidden; min-width: 200px; background-color: #333; color: #fff; text-align: center;
             border-radius: 8px; padding: 12px; position: fixed; z-index: 1000; left: 50%; bottom: 100px;
@@ -70,13 +104,12 @@
         }
         #toast.show { visibility: visible; animation: fadein 0.3s, fadeout 0.3s 2s; }
 
-        /* Sticky Bottom Checkout Bar */
         .checkout-bar {
             position: fixed; bottom: 0; left: 0; right: 0; background: #fff; padding: 16px 24px;
             box-shadow: 0 -4px 20px rgba(0,0,0,0.1); display: none; justify-content: space-between; align-items: center;
             z-index: 999; max-width: 1000px; margin: 0 auto;
         }
-        .total-label { font-size: 12px; color: #666; text-transform: uppercase; font-weight: 700; }
+        .total-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
         .total-amount { font-size: 20px; font-weight: 800; color: var(--brand); }
         
         .buy-now-btn {
@@ -86,26 +119,60 @@
 
         @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 100px; opacity: 1;} }
         @keyframes fadeout { from {bottom: 100px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+        @media (max-width: 600px) {
+            nav { display: none; } /* Clean mobile header */
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">🔥 CRAVE<span>.KITCHEN</span></div>
+        <a href="#" class="logo">🔥 CRAVE<span>.KITCHEN</span></a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#location">Location</a>
+        </nav>
         <div class="cart-pill">🛒 Cart (<span id="count">0</span>)</div>
     </header>
 
     <div class="hero">
-        <span class="tag">MBA Concept Demo</span>
-        <h1>High-Margin. Low Wait.</h1>
-        <p>A hypothetical cloud-kitchen model optimizing 12-minute delivery radiuses.</p>
+        <span class="tag">MBA Venture Pitch</span>
+        <h1>High-Margin. Zero Wait.</h1>
+        <p>A cloud-kitchen food delivery model engineered specifically for university dining ecosystems.</p>
     </div>
 
-    <div class="container">
+    <div class="container" id="about">
+        <div class="section-title">💡 The Operational Concept</div>
+        <div class="section-subtitle">Addressing the inefficiencies of traditional campus dining.</div>
+        
+        <div class="about-box">
+            <p>Traditional restaurant setups struggle with high prime costs (labor + rent) and unpredictable ticket times during peak campus rush hours. <strong>CRAVE Kitchen</strong> utilizes a streamlined, limited-SKU assembly line model designed to minimize prep times and maximize order throughput.</p>
+            
+            <div class="about-grid">
+                <div class="stat-box">
+                    <div class="stat-num">12 Min</div>
+                    <div class="stat-label">Target Delivery Order Fulfillment</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">68%</div>
+                    <div class="stat-label">Average Item Contribution Margin</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">4 SKUs</div>
+                    <div class="stat-label">Optimized Supply Chain Inventory</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="menu">
         <div class="section-title">⚡ Engineered Signature Menu</div>
+        <div class="section-subtitle">High-velocity items designed for rapid kitchen assembly.</div>
         
         <div class="grid">
-            <!-- Product 1 -->
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Burger">
                 <div class="card-body">
@@ -120,7 +187,6 @@
                 </div>
             </div>
 
-            <!-- Product 2 -->
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza">
                 <div class="card-body">
@@ -135,7 +201,6 @@
                 </div>
             </div>
 
-            <!-- Product 3 -->
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="Tacos">
                 <div class="card-body">
@@ -150,7 +215,6 @@
                 </div>
             </div>
 
-            <!-- Product 4 -->
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Drink">
                 <div class="card-body">
@@ -167,10 +231,53 @@
         </div>
     </div>
 
-    <!-- Live Toast Bar -->
+    <div class="container" id="reviews">
+        <div class="section-title">💬 Customer Validation</div>
+        <div class="section-subtitle">Simulated feedback from soft-launch focus groups.</div>
+        
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Arrived at my dorm 14 minutes after clicking order. The truffle smashburger easily beats every established spot on campus."</p>
+                <div class="reviewer">— Marcus K., MBA Candidate</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Finally a late-night option that doesn't feel like greasy cafeteria leftovers. The Yuzu tonic is incredible."</p>
+                <div class="reviewer">— Elena R., Law School Student</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★☆</div>
+                <p class="review-text">"Insanely fast pricing and delivery. Perfect price-to-portion ratio for a quick study break meal between exams."</p>
+                <div class="reviewer">— David T., Undergrad Senior</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="location">
+        <div class="section-title">📍 Hub & Logistics</div>
+        <div class="section-subtitle">Strategic placement within the university delivery corridor.</div>
+        
+        <div class="location-card">
+            <div class="loc-details">
+                <h3>Cloud Kitchen Commissary</h3>
+                <p><strong>Address:</strong> 442 Innovation Way, Suite B</p>
+                <p><strong>Hours:</strong> Mon - Sun | 11:00 AM - 2:00 AM</p>
+                <p><strong>Service Radius:</strong> 1.8 Miles (Guaranteed Speed Zone)</p>
+                <br>
+                <p style="color: #888; font-size: 12px;">*Facility operates purely for dispatch and pickup logistics. No front-of-house overhead.</p>
+            </div>
+            <div class="map-placeholder">
+                <div>
+                    📍 [ Interactive GPS Map Component ]<br>
+                    <span style="font-size: 12px; color: #AAA;">Centered on University Central Campus</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="toast">Item added to order</div>
 
-    <!-- Slide-up Checkout Bar -->
     <div class="checkout-bar" id="checkoutBar">
         <div>
             <div class="total-label">Subtotal Estimate</div>
@@ -187,14 +294,10 @@
             itemsCount++;
             runningTotal += itemPrice;
 
-            // Update UI numbers
             document.getElementById('count').innerText = itemsCount;
             document.getElementById('totalDisplay').innerText = '$' + runningTotal.toFixed(2);
-
-            // Show sticky bottom bar
             document.getElementById('checkoutBar').style.display = 'flex';
 
-            // Trigger Toast
             const toast = document.getElementById('toast');
             toast.innerText = "Added " + itemName + " ($" + itemPrice.toFixed(2) + ")";
             toast.className = "show";
@@ -202,9 +305,8 @@
         }
 
         function triggerCheckout() {
-            alert("🎯 DEMO SUCCESS!\n\nSimulated Gateway: Payment authorized for $" + runningTotal.toFixed(2) + ".\nOrder dispatched to Kitchen Display System (KDS #104).");
+            alert("🎯 DEMO SUCCESS!\n\nSimulated Gateway: Payment authorized for $" + runningTotal.toFixed(2) + ".\nOrder dispatched to Kitchen Display System.");
             
-            // Reset Demo
             itemsCount = 0;
             runningTotal = 0;
             document.getElementById('count').innerText = "0";
